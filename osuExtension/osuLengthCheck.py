@@ -4,6 +4,7 @@ import sys
 
 #Charles
 #My name is Richard
+#My name is Reza
 exec(open("osuAuth.py").read())
 headers = {
     'Authorization': 'Bearer ' + get_token()["access_token"]
