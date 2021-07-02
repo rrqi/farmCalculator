@@ -2,8 +2,8 @@ import requests
 import json
 import sys
 
+#Charles
 exec(open("osuAuth.py").read())
-print(get_token()["access_token"])
 headers = {
     'Authorization': 'Bearer ' + get_token()["access_token"]
 }
