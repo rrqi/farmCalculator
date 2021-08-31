@@ -10,7 +10,11 @@ headers = {
 
 
 userId = sys.argv[1]
-scores = json.loads(requests.get('https://osu.ppy.sh/api/v2/users/' + userId + '/scores/best?limit=100', headers=headers).text)
+theUser = requests.get('https://osu.ppy.sh/api/v2/users/' + userId, headers=headers)
+user = json.loads(theUser.text)
+userN = user['id']
+
+scores = json.loads(requests.get('https://osu.ppy.sh/api/v2/users/' + str(userN) + '/scores/best?limit=100', headers=headers).text)
 
 spinners = 0
 mapspinners = 0
