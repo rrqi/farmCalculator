@@ -9,7 +9,7 @@ headers = {
 }
 
 
-userId = "11334285"
+userId = sys.argv[1]
 scores = json.loads(requests.get('https://osu.ppy.sh/api/v2/users/' + userId + '/scores/best?limit=100', headers=headers).text)
 
 spinners = 0
