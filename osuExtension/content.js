@@ -48,6 +48,54 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 var jsonResponse2 = JSON.parse(this.responseText);
                 var fullScores = extend(jsonResponse2, jsonResponse1)
                 //convert legnthCheck to js
+                ringtone = 0
+                tvSize = 0
+                normal = 0
+                long = 0
+                marathon = 0
+
+                rtlen = 60
+                tvlen = 120
+                nmlen = 210
+                longlen = 360
+                //slack to find where the json stuff gets pulled down. you can remove the comments and correct the naming. <3
+                for(i=0; i<length(/*json response for scores*/); i++){
+                    
+                    if(/*score[i].mods == "DT" || score[i].mods == "NC"*/){
+                        if(/*score[i].map.length*/ < rtlen*1.5){
+                            ringtone += 1
+                        }
+                        if(/*score[i].map.length*/ < tvlen*1.5){
+                            tvSize += 1
+                        }
+                        if(/*score[i].map.length*/ < nmlen*1.5){
+                            normal += 1
+                        }
+                        if(/*score[i].map.length*/ < longlen*1.5){
+                            long += 1
+                        }
+                        else{
+                            marathon += 1
+                        }
+                    }
+                    else{
+                        if(/*score[i].map.length*/ < rtlen){
+                            ringtone += 1
+                        }
+                        if(/*score[i].map.length*/ < tvlen){
+                            tvSize += 1
+                        }
+                        if(/*score[i].map.length*/ < nmlen){
+                            normal += 1
+                        }
+                        if(/*score[i].map.length*/ < longlen){
+                            long += 1
+                        }
+                        else{
+                            marathon += 1
+                        }
+                    }
+                }          
 
 
             }
