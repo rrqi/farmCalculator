@@ -19,6 +19,7 @@ r2 = requests.get('https://osu.ppy.sh/api/v2/users/' + str(userN) + '/scores/bes
 j1 = json.loads(r1.text)
 j2 = json.loads(r2.text)
 jj = j1 + j2
+print(jj)
 ringtone = 0
 tvSize = 0
 normal = 0
@@ -52,10 +53,10 @@ for item in jj:
             long += 1
         else:
             marathon += 1
-print("Amount of Ringtone Sized Maps: " + str(ringtone))
-print("Amount of TV Sized Maps: " + str(tvSize))
-print("Amount of Medium Sized Maps: " + str(normal))
-print("Amount of Long Sized Maps: " + str(long))
-print("Amount of Marathon Sized Maps: " + str(marathon))
+#print("Amount of Ringtone Sized Maps: " + str(ringtone))
+#print("Amount of TV Sized Maps: " + str(tvSize))
+#print("Amount of Medium Sized Maps: " + str(normal))
+#print("Amount of Long Sized Maps: " + str(long))
+#print("Amount of Marathon Sized Maps: " + str(marathon))
     #print(json.dumps(item['beatmap']['version'], indent = 1))
 

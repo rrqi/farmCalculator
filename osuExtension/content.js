@@ -56,7 +56,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 normal = 0
                 long = 0
                 marathon = 0
-
+                
+                username = fullScores[0]['user']['username']
                 rtlen = 60
                 tvlen = 120
                 nmlen = 210
@@ -66,6 +67,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     var item = fullScores[i]
                     var mods = item.mods
                     var exist = false
+                    //window.alert(JSON.stringify(fullScores[i]))
                     for(j = 0;j < mods.length;j++){
                         var mod = new String(mods[j])
                         if(mod == "DT" || mod == "NC"){
@@ -108,7 +110,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     }
                 }          
                 
-
+                document.getElementById("name").innerHTML = username + "'s Top Play Length Stats"
                 document.getElementById("rtn").innerHTML = "Amount of Ringtone Sized Maps: " + ringtone
                 document.getElementById("tvn").innerHTML = "Amount of TV Sized Maps: " + tvSize
                 document.getElementById("nmn").innerHTML = "Amount of Medium Sized Maps: " + normal
