@@ -4,7 +4,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
     
     splitUrl = url.split("/")
-    var playerId = splitUrl[splitUrl.length-1];
+    var playerId = splitUrl[4];
 
     
     
