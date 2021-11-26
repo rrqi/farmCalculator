@@ -56,6 +56,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 normal = 0
                 long = 0
                 marathon = 0
+                scores = []
                 
                 username = fullScores[0]['user']['username']
                 rtlen = 60
@@ -77,35 +78,45 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     if(exist == true){
                         if(item['beatmap']['total_length'] < rtlen*1.5){
                             ringtone += 1
+                            scores.push(0)
                         }
                         else if(item['beatmap']['total_length'] < tvlen*1.5){
                             tvSize += 1
+                            scores.push(2)
                         }
                         else if(item['beatmap']['total_length'] < nmlen*1.5){
                             normal += 1
+                            scores.push(4)
                         }
                         else if(item['beatmap']['total_length'] < longlen*1.5){
                             long += 1
+                            scores.push(6)
                         }
                         else{
                             marathon += 1
+                            scores.push(8)
                         }
                     }
                     else{
                         if(item['beatmap']['total_length'] < rtlen){
                             ringtone += 1
+                            scores.push(0)
                         }
                         else if(item['beatmap']['total_length'] < tvlen){
                             tvSize += 1
+                            scores.push(2)
                         }
                         else if(item['beatmap']['total_length'] < nmlen){
                             normal += 1
+                            scores.push(4)
                         }
                         else if(item['beatmap']['total_length'] < longlen){
                             long += 1
+                            scores.push(6)
                         }
                         else{
                             marathon += 1
+                            scores.push(8)
                         }
                     }
                 }          
@@ -116,6 +127,15 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 document.getElementById("nmn").innerHTML = "Amount of Medium Sized Maps: " + normal
                 document.getElementById("longn").innerHTML = "Amount of Long Sized Maps: " + long
                 document.getElementById("elsen").innerHTML = "Amount of Marathon Sized Maps: " + marathon
+                total = 0
+                for(i = 0; i < scores.length; i++){
+                    total += scores[i]
+                }
+
+                pplength = total / scores.length
+                console.log("pplength: " + pplength)
+
+                document.getElementById("score").innerHTML = "pp length: " + pplength
             }
         }
     }
